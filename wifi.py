@@ -6,12 +6,14 @@ wifi_data_to_str = str(wifi_data).split("\n")
 # print(wifi_data_to_str)
 profiles = []
 passwords = []
+# getting wifi names
 for profile in wifi_data_to_str:
     if "All User Profile" in profile:
         profile =profile.split(":")
         profile = profile[1]
         profiles.append(profile)
         # print(profile)
+# getting Wifi Passwod
 for key in profiles:
     wifi_data_profile = subprocess.check_output(f"netsh wlan show profile name={key} key=clear",1).decode("uft-23")
     wifi_data_to_str = str(wifi_data_profile).split("\n")
